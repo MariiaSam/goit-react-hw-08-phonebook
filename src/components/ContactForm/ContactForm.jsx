@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/сontactsOperations';
+import { nanoid } from 'nanoid';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
 import {
@@ -12,6 +12,7 @@ import {
   Label,
   Button,
 } from './ContactForm.styled';
+import { addContact } from '../../redux/contactsSlice';
 
 const schema = object().shape({
   name: string()
@@ -38,39 +39,41 @@ export const ContactForm = () => {
         number: '',
       }}
       validationSchema={schema}
-
       onSubmit={({ name, number }, actions) => {
-        const existingName = contacts.find(
-          ({ name: oldName }) => oldName && oldName.toLowerCase() === name.toLowerCase()
-        );
-      
-        const existingNumber = contacts.find(
-          ({ number: oldNumber }) => oldNumber && oldNumber.toLowerCase() === number.toLowerCase()
-        );
-      
-        if (existingName || existingNumber) {
-          if (existingName) {
-
-            Report.success(
-              'Notiflix Success',
-              `${name} already in contacts`,
-              'Okay',
-              )
-          }
-          if (existingNumber) {
-            Report.failure(
-              `${number} already in contacts`,
-              'Okay',
-              );
-          }
+        if (
+          contacts.find(
+            ({ name: oldName }) => oldName.toLowerCase() === name.toLowerCase()
+          )
+        ) {
+          Report.success(
+            'Notiflix Success',
+            `${name} is already in contacts`,
+            'Okay'
+          );
+          actions.resetForm();
+          return;
+        }
+        if (
+          contacts.find(
+            ({ number: oldNumber }) =>
+              oldNumber.toLowerCase() === number.toLowerCase()
+          )
+        ) {
+          Report.success(
+            'Notiflix Success',
+            `${number} is already in contacts`,
+            'Okay'
+          );
           actions.resetForm();
           return;
         }
         Report.success(
-          `${name} added to your contacts list`,
-          'Okay',
-          );
-        dispatch(addContact({ name, phone: number }));
+          'Notiflix Success',
+          `${name} added to your contact list`,
+          'Okay'
+        );
+
+        dispatch(addContact({ name, number, id: nanoid() }));
         actions.resetForm();
       }}
     >
