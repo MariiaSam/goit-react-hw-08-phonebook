@@ -34,6 +34,7 @@ export const ContactListBtn = styled.button`
   margin-bottom: 20px;
   padding: 8px;
   border: 1px solid #f28f2c;
+  cursor: pointer;
 
   border-radius: 10px;
   box-shadow: rgba(216, 225, 215, 0.24) 0px 3px 8px;

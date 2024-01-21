@@ -40,12 +40,12 @@ const contactsSlice = createSlice({
       .addCase(addContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, { payload }) => {
-        const index = state.items.findIndex(contact => {
-          return contact.id === payload.id;
-        });
-        state.items.splice(index, 1);
-        state.isLoading = false;
-        state.error = false;
+        const index = state.items.findIndex(contact => contact.id === payload);
+        if (index !== -1) {
+          state.items.splice(index, 1);
+          state.isLoading = false;
+          state.error = false;
+        }
       })
       .addCase(deleteContact.rejected, handleRejected);
   },

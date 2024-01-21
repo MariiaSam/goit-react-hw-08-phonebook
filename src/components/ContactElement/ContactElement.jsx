@@ -9,4 +9,4 @@ export const ContactElement = ({ id, name, number, onDelete }) => {
       </ContactElementBtn>
     </li>
   );
-}
+};
