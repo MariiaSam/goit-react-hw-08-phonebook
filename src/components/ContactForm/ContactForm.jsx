@@ -1,8 +1,8 @@
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/selectors';
-import { nanoid } from '@reduxjs/toolkit';
+import { addContact } from '../../redux/contacts/contactsOperations';
+import { selectContacts } from '../../redux/contacts/contactsSelectors';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
 import {
@@ -12,7 +12,6 @@ import {
   Label,
   Button,
 } from './ContactForm.styled';
-import { addContact } from '../../redux/contactsSlice';
 
 const schema = object().shape({
   name: string()
@@ -73,7 +72,7 @@ export const ContactForm = () => {
           'Okay'
         );
 
-        dispatch(addContact({ name, number, id: nanoid() }));
+        dispatch(addContact({ name, number }));
         actions.resetForm();
       }}
     >

@@ -4,4 +4,4 @@ export const selectUser = ({ auth }) => auth.user;
 
 export const selectIsRefreshing = ({ auth }) => auth.isRefreshing;
 
-export const selectUsername = ({ auth }) => auth.user.name;
+export const selectUserName = ({ auth }) => auth.user.name;

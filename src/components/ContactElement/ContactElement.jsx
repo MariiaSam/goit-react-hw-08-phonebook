@@ -1,43 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-
-import { deleteContact } from '../../redux/сontactsOperations';
-import { selectIsDeleting } from '../../redux/selectors';
-
 import { ContactElementBtn } from './ContactElement.styled';
 
-import { Report } from 'notiflix/build/notiflix-report-aio';
 
-
-
-export const ContactElement = ({ id, name, phone }) => {
-  const dispatch = useDispatch();
-  const isDeleting = useSelector(selectIsDeleting);
-  const [deleteButton, setDeleteButton] = useState('Delete');
-
-  const handleDeleteBtn = id => {
-    setDeleteButton('In process');
-    Report.failure(
-      'Notiflix Failure',
-      `${name} number removed from the contact list!`,
-      'Okay',
-      );
-    dispatch(deleteContact(id)).then(() => {
-      setDeleteButton('Delete');
-    });
-  };
+export const ContactElement = ({ id, name, number, onDelete }) => {
+  
 
   return (
     <>
       <li>
         {' '}
-        {name}: {phone}
+        {name}: {number}
         <ContactElementBtn
           type="button"
-          disabled={isDeleting}
-          onClick={() => handleDeleteBtn(id)}
+          onClick={() => onDelete(id)}
         >
-          {deleteButton}
         </ContactElementBtn>
       </li>
     </>

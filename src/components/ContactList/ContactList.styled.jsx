@@ -13,7 +13,7 @@ export const ContactWrap = styled.ul`
   list-style: none;
 `;
 
-export const ContactListItem = styled.li``;
+// export const ContactListItem = styled.li``;
 
 export const Span = styled.span`
   font-size: 24px;
