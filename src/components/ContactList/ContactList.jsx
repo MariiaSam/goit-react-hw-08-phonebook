@@ -53,11 +53,11 @@ export const ContactList = () => {
               <Span>{name}:</Span>
               <Span>{number}</Span>
               <ContactListBtn
-  type="button"
-  onClick={() => deleteContactList(id)}
->
-  Delete
-</ContactListBtn>
+                type="button"
+                onClick={() => deleteContactList(id)}
+              >
+                Delete
+              </ContactListBtn>
             </ContactElement>
           ))}
         </ContactWrap>
