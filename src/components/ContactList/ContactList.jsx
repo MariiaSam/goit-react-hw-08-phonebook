@@ -48,7 +48,8 @@ export const ContactList = () => {
       {activeContacts.length > 0 && (
         <ContactWrap>
           {activeContacts.map(({ id, name, number }) => (
-            <ContactElement key={id} id={id}>
+            <ContactElement key={id} id={id}  name={name}
+            number={number}>
               <Span>{name}:</Span>
               <Span>{number}</Span>
               <ContactListBtn type="button" onDelete={() => deleteContactList}>

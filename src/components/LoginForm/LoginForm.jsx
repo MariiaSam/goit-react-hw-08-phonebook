@@ -22,7 +22,7 @@ const LoginForm = () => {
     <Login onSubmit={handleSubmit} autoComplete="off">
       <Label>
         Email
-        <FieldStyled type="email" name="email" />
+        <FieldStyled type="email" name="email"  />
       </Label>
       <Label>
         Password
