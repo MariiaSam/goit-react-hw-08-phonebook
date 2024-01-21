@@ -4,21 +4,23 @@ import { Suspense } from 'react';
 import  Navigation from 'components/Navigation/Navigation'
 import { Loader } from 'components/Loader/Loader';
 
+import { Header, Wrap } from './Layout.styled';
+
 
 const Layout = () => {
     return (
       <>
-      <header>
-        <div>
+      <Header>
+        <Wrap>
             <Navigation/>
-        </div>
-      </header>
+        </Wrap>
+      </Header>
       <main>
-        <div>
+        <Wrap>
             <Suspense fallback={<Loader/>}>
             <Outlet/>
             </Suspense>
-        </div>
+        </Wrap>
       </main>
       
       </>

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import UserMenu from 'components/UserMenu/UserMenu';
 import { useAuth } from 'hooks/useAuth';
 
+import { NavMenu, NavList } from './Navigation.styled';
+
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
+    <NavMenu>
       <div>
         {isLoggedIn ? (
           <Link to={'/contacts'}>Contacts</Link>
@@ -18,17 +20,17 @@ const Navigation = () => {
       {isLoggedIn ? (
         <UserMenu />
       ) : (
-        <ul>
+        <NavList>
           <li>
-            <Link to='/register'>register </Link>
+            <Link to='/register'>Register </Link>
           </li>
 
           <li>
-          <Link to='/login'>login </Link>
+          <Link to='/login'>Login </Link>
           </li>
-        </ul>
+        </NavList>
       )}
-    </nav>
+    </NavMenu>
   );
 };
 

@@ -1,6 +1,6 @@
-import { ErrorText } from "./Error.styled"
+// import { ErrorText } from "./Error.styled"
 
-export const Error = ({message}) => (
-    <ErrorText>{message}</ErrorText>
+// export const Error = ({message}) => (
+//     <ErrorText>{message}</ErrorText>
     
-    )
+//     )
