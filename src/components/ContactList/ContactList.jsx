@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchContacts } from '../../redux/contacts/contactsOperations';
-import { deleteContact } from '../../redux/contacts/contactsOperations';
+import { fetchContacts, deleteContact } from '../../redux/contacts/contactsOperations';
 import {
   selectContacts,
   selectLoading,
@@ -28,17 +27,14 @@ export const ContactList = () => {
 
   const filterContacts = () => {
     const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(({ name }) => {
-      return name.toLowerCase().includes(normalizedFilter);
-    });
+    return contacts.filter(({ name }) => name.toLowerCase().includes(normalizedFilter));
   };
 
   const activeContacts = filterContacts();
   const isListEmpty = !activeContacts.length && !isLoading && !isError;
 
-  const deleteContactList = filterId => {
-    dispatch(deleteContact(filterId));
+  const deleteContactList = id => {
+    dispatch(deleteContact(id));
   };
 
   return (
@@ -52,7 +48,7 @@ export const ContactList = () => {
             number={number}>
               <Span>{name}:</Span>
               <Span>{number}</Span>
-              <ContactListBtn type="button" onDelete={() => deleteContactList}>
+              <ContactListBtn type="button" onDelete={() => deleteContactList(id)}>
                 Delete
               </ContactListBtn>
             </ContactElement>

@@ -1,6 +1,5 @@
 import { ContactElementBtn } from './ContactElement.styled';
 
-
 export const ContactElement = ({ id, name, number, onDelete }) => {
   return (
     <li>
@@ -10,4 +9,4 @@ export const ContactElement = ({ id, name, number, onDelete }) => {
       </ContactElementBtn>
     </li>
   );
-};
+}
