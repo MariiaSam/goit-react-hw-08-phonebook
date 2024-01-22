@@ -41,7 +41,6 @@ export const ContactList = () => {
   const handleDeleteContact = id => {
     dispatch(deleteContact(id));
   };
-  
 
   return (
     <>

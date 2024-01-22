@@ -2,9 +2,6 @@
 
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   background-color: rgb(180, 210, 207);
 

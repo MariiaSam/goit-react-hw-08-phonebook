@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   display: flex;
+  justify-content: space-between;
+  
   box-shadow: 0px 2px 10px 1px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+
+  width: 100%; 
   height: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -14,7 +18,7 @@ export const Header = styled.header`
 `;
 
 export const Wrap = styled.div`
-  width: 1280px;
+  width: 100%;
 
   padding: 0 24px;
 
