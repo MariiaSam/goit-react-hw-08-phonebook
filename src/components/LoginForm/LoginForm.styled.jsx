@@ -29,7 +29,7 @@ export const FieldStyled = styled.input`
 
 export const Button = styled.button`
   padding: 10px 15px;
-  background-color: #eab886;
+  background-color:orange;
   color: white;
 
   border: none;

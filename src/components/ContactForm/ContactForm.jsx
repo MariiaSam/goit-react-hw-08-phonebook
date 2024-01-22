@@ -44,11 +44,12 @@ export const ContactForm = () => {
             ({ name: oldName }) => oldName.toLowerCase() === name.toLowerCase()
           )
         ) {
-          Report.success(
-            'Notiflix Success',
+
+          Report.failure(
+            'Notiflix Failure',
             `${name} is already in contacts`,
-            'Okay'
-          );
+            'Okay')
+      
           actions.resetForm();
           return;
         }

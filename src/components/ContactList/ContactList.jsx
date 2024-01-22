@@ -15,7 +15,7 @@ import { selectFilter } from '../../redux/filter/filterSelectors';
 import { ContactElement } from 'components/ContactElement/ContactElement';
 import { Loader } from 'components/Loader/Loader';
 
-import { ContactWrap, ContactListBtn, Span } from './ContactList.styled';
+import { ContactWrap } from './ContactList.styled';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -38,9 +38,10 @@ export const ContactList = () => {
   const activeContacts = filterContacts();
   const isListEmpty = !activeContacts.length && !isLoading && !isError;
 
-  const deleteContactList = id => {
+  const handleDeleteContact = id => {
     dispatch(deleteContact(id));
   };
+  
 
   return (
     <>
@@ -49,16 +50,13 @@ export const ContactList = () => {
       {activeContacts.length > 0 && (
         <ContactWrap>
           {activeContacts.map(({ id, name, number }) => (
-            <ContactElement key={id} id={id} name={name} number={number}>
-              <Span>{name}:</Span>
-              <Span>{number}</Span>
-              <ContactListBtn
-                type="button"
-                onClick={() => deleteContactList(id)}
-              >
-                Delete
-              </ContactListBtn>
-            </ContactElement>
+            <ContactElement
+              key={id}
+              id={id}
+              name={name}
+              number={number}
+              onDelete={() => handleDeleteContact(id)}
+            />
           ))}
         </ContactWrap>
       )}

@@ -22,7 +22,6 @@ const Layout = () => {
             </Suspense>
         </Wrap>
       </main>
-      
       </>
     );
   };

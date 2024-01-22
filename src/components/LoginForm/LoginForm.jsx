@@ -28,7 +28,7 @@ const LoginForm = () => {
         Password
         <FieldStyled type="password" name="password" />
       </Label>
-      <Button type="submit">Log In</Button>
+      <Button type="submit">LogIn</Button>
     </Login>
   );
 };
